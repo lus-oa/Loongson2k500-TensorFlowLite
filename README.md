@@ -30,5 +30,11 @@ https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/bench
 - 人体检测基准测试
 
 &emsp; - 人体检测基准测试使用了两张bmp图片作为输入  
-&emsp; - 具体位于tensorflow\lite\micro\examples\person_detection\testdata子目录
+&emsp; - 具体位于tensorflow\lite\micro\examples\person_detection\testdata子目录  
+### 2.2 安装依赖的软件
+由于TFLM的过程中，需要下载一些测试数据，并使用Pillow库将部分测试图片转化为C代码。因此，编译TFLM之前需要先安装Pillow库，以及一些命令行工具。
 
+运行TFLM基准测试之前，使用如下命令先安装依赖的一些软件：  
+```
+sudo apt install python3 python3-pip git unzip wget build-essential
+```
