@@ -18,4 +18,14 @@ TFLM是一个边缘AI推理框架，可以简单理解为一个计算库；另�
 ### 2.1 基准测试简介
 TFLM代码仓顶层的README.md中给出了基准测试文档链接：
 
-https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/benchmarks/README.md
+https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/benchmarks/README.md  
+
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/49e7521c-dc0e-4716-bb02-e9bb35761b0f)  
+通过这个目录我们可以知道，TFLM提供了两个基准测试（实际有三个），分别是：
+
+关键词基准测试
+关键词基准测试使用的是程序运行时生产的随机数据作为输入，所以它的输出是没有意义的
+人体检测基准测试
+人体检测基准测试使用了两张bmp图片作为输入
+具体位于tensorflow\lite\micro\examples\person_detection\testdata子目录
+
