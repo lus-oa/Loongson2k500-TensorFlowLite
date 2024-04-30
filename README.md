@@ -38,3 +38,23 @@ https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/bench
 ```
 sudo apt install python3 python3-pip git unzip wget build-essential
 ```
+Pillow是一个Python库，因此如果PC的Linux系统上还没有Python则需要安装。  
+#### 2.2.1 设置pip源
+将pip源设置为国内源，可以加速pip包安装，执行如下命令：
+```shell
+pip config set global.index-url <http://mirrors.aliyun.com/pypi/simple/>
+pip config set global.trusted-host mirrors.aliyun.com
+pip config set global.timeout 120
+```
+#### 2.2.2 安装Pillow库
+执行如下命令，安装pillow库：  
+```
+pip install pillow
+```
+安装过程会编译pillow包中的C/C++源代码文件，速度较慢，耐心等待。
+
+如果Pillow安装过程报错：The headers or library files could not be found for jpeg
+
+需要先安装libjpeg库：
+
+`apt-get install libjpeg-dev zlib1g-dev`
