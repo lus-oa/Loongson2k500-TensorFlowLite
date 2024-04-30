@@ -14,3 +14,8 @@ TFLM是TensorFlow Lite for Microcontrollers项目的简称，全称翻译过来�
 ```
 git clone https://github.com/tensorflow/tflite-micro.git
 ```
+TFLM是一个边缘AI推理框架，可以简单理解为一个计算库；另外，TFLM项目内提供了基准测试，用于对框架进行简单的测试，可以实现用一个AI模型在不同设备上的进行推理，并就各自推理性能进行对比。  
+### 2.1 基准测试简介
+TFLM代码仓顶层的README.md中给出了基准测试文档链接：
+
+https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/benchmarks/README.md
