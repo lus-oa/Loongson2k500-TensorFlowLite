@@ -7,4 +7,10 @@ TFLM是TensorFlow Lite for Microcontrollers项目的简称，全称翻译过来�
 > TensorFlow Lite for Microcontrollers 是 TensorFlow Lite 的一个实验性移植版本，它适用于微控制器和其他一些仅有数千字节内存的设备。 它可以直接在“裸机”上运行，不需要操作系统支持、任何标准 C/C++ 库和动态内存分配。核心运行时(core runtime)在 Cortex M3 上运行时仅需 16KB，加上足以用来运行语音关键字检测模型的操作，也只需 22KB 的空间。
 
 
-## 二、TFLM使用方法
+## 二、TFLM使用方法  
+接下来准备在PC上编译TFLM，并运行基准测试。
+
+首先下载TFLM代码，使用如下命令：  
+```
+git clone https://github.com/tensorflow/tflite-micro.git
+```
