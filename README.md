@@ -23,8 +23,8 @@ https://github.com/tensorflow/tflite-micro/blob/main/tensorflow/lite/micro/bench
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/49e7521c-dc0e-4716-bb02-e9bb35761b0f)  
 通过这个目录我们可以知道，TFLM提供了两个基准测试（实际有三个），分别是：
 
-- 关键词基准测试
-&emsp; - 关键词基准测试使用的是程序运行时生产的随机数据作为输入，所以它的输出是没有意义的
+- 关键词基准测试  
+&emsp; - 关键词基准测试使用的是程序运行时生产的随机数据作为输入，所以它的输出是没有意义的  
 - 人体检测基准测试
 &emsp;- 人体检测基准测试使用了两张bmp图片作为输入
 &emsp;- 具体位于tensorflow\lite\micro\examples\person_detection\testdata子目录
