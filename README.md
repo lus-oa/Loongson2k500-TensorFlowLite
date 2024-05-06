@@ -57,4 +57,20 @@ pip install pillow
 
 需要先安装libjpeg库：
 
-`apt-get install libjpeg-dev zlib1g-dev`
+`apt-get install libjpeg-dev zlib1g-dev`  
+
+### 2.3 基准测试命令
+参考”Run on x86”，在x86 PC上运行关键词基准测试的命令是：  
+```
+make -f tensorflow/lite/micro/tools/make/Makefile run_keyword_benchmark
+```
+在PC上运行人体检测基准测试的命令是：  
+```
+make -f tensorflow/lite/micro/tools/make/Makefile run_person_detection_benchmark
+```
+执行这两个命令，会依次执行如下步骤：  
+&emsp; - 调用几个下载脚本，下载依赖库和数据集；
+&emsp; - 编译测试程序；
+&emsp; - 运行测试程序；
+`tensorflow/lite/micro/tools/make/Makefile`代码片段中，可以看到调用了几个下载脚本：
+
