@@ -132,5 +132,10 @@ $(KEYWORD_BENCHMARK_8BIT_SRCS),$(KEYWORD_BENCHMARK_8BIT_HDRS),$(KEYWORD_BENCHMAR
 $(eval $(call microlite_test,person_detection_benchmark,\
 $(PERSON_DETECTION_BENCHMARK_SRCS),$(PERSON_DETECTION_BENCHMARK_HDRS),$(PERSON_DETECTION_BENCHMARK_GENERATOR_INPUTS)))
 ```
+从这里可以看到，实际上有三个基准测试程序，比文档多了一个 keyword_benchmark_8bit ，应该是 keword_benchmark的8bit量化版本。另外，可以看到有三个tflite的模型文件。  
+### 2.5 Keyword基准测试
+关键词基准测试使用的模型较小，比较适合在STM32 F3/F4这类主频低于100MHz的MCU。
+
+这个基准测试的模型比较小，计算量也不大，所以在PC上运行这个基准测试的耗时非常短：
 
 
