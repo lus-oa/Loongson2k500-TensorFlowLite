@@ -72,5 +72,13 @@ make -f tensorflow/lite/micro/tools/make/Makefile run_person_detection_benchmark
 &emsp; - 调用几个下载脚本，下载依赖库和数据集；  
 &emsp; - 编译测试程序；  
 &emsp; - 运行测试程序；  
-`tensorflow/lite/micro/tools/make/Makefile`代码片段中，可以看到调用了几个下载脚本：
+`tensorflow/lite/micro/tools/make/Makefile`代码片段中，可以看到调用了几个下载脚本：  
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/811b67e3-f633-4d66-a6c1-f0984e31652a)  
+flatbuffers_download.sh和kissfft_download.sh脚本第一次执行时，会将相应的压缩包下载到本地，并解压，具体细节参见代码内容；
+
+pigweed_download.sh脚本会克隆一个代码仓，再检出一个特定版本：    
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/e7462f80-2690-4a9d-a9aa-516f40dcd671)  
+这里需要注意的是，代码仓https://pigweed.googlesource.com/pigweed/pigweed 国内一般无法访问（因为域名googlesource.com被禁了）。将此连接修改为克隆好的代码仓：https://github.com/xusiwei/pigweed.git 可以解决因为国内无法访问googlesource.com而无法下载pigweed测试数据的问题
+
+
 
