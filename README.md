@@ -80,5 +80,57 @@ pigweed_download.sh脚本会克隆一个代码仓，再检出一个特定版本�
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/e7462f80-2690-4a9d-a9aa-516f40dcd671)  
 这里需要注意的是，代码仓https://pigweed.googlesource.com/pigweed/pigweed 国内一般无法访问（因为域名googlesource.com被禁了）。将此连接修改为克隆好的代码仓：https://github.com/xusiwei/pigweed.git 可以解决因为国内无法访问googlesource.com而无法下载pigweed测试数据的问题
 
+### 2.4 基准测试构建规则
+`tensorflow/lite/micro/tools/make/Makefile`文件是Makefile总入口文件，该文件中定义了一些makefile宏函数，并通过include引入了其他文件，包括定义了两个基准测试编译规则的`tensorflow/lite/micro/benchmarks/Makefile.inc`文件：  
+```
+KEYWORD_BENCHMARK_SRCS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/benchmarks/keyword_benchmark.cc
+
+KEYWORD_BENCHMARK_GENERATOR_INPUTS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/models/keyword_scrambled.tflite
+
+KEYWORD_BENCHMARK_HDRS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/benchmarks/micro_benchmark.h
+
+KEYWORD_BENCHMARK_8BIT_SRCS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/benchmarks/keyword_benchmark_8bit.cc
+
+KEYWORD_BENCHMARK_8BIT_GENERATOR_INPUTS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/models/keyword_scrambled_8bit.tflite
+
+KEYWORD_BENCHMARK_8BIT_HDRS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/benchmarks/micro_benchmark.h
+
+PERSON_DETECTION_BENCHMARK_SRCS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/benchmarks/person_detection_benchmark.cc
+
+PERSON_DETECTION_BENCHMARK_GENERATOR_INPUTS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/examples/person_detection/testdata/person.bmp \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/examples/person_detection/testdata/no_person.bmp
+
+ifneq ($(CO_PROCESSOR),ethos_u)
+  PERSON_DETECTION_BENCHMARK_GENERATOR_INPUTS += \
+    $(TENSORFLOW_ROOT)tensorflow/lite/micro/models/person_detect.tflite
+else
+  # Ethos-U use a Vela optimized version of the original model.
+  PERSON_DETECTION_BENCHMARK_SRCS += \
+  $(GENERATED_SRCS_DIR)$(TENSORFLOW_ROOT)tensorflow/lite/micro/models/person_detect_model_data_vela.cc
+endif
+
+PERSON_DETECTION_BENCHMARK_HDRS := \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/examples/person_detection/model_settings.h \
+$(TENSORFLOW_ROOT)tensorflow/lite/micro/benchmarks/micro_benchmark.h
+
+# Builds a standalone binary.
+$(eval $(call microlite_test,keyword_benchmark,\
+$(KEYWORD_BENCHMARK_SRCS),$(KEYWORD_BENCHMARK_HDRS),$(KEYWORD_BENCHMARK_GENERATOR_INPUTS)))
+
+# Builds a standalone binary.
+$(eval $(call microlite_test,keyword_benchmark_8bit,\
+$(KEYWORD_BENCHMARK_8BIT_SRCS),$(KEYWORD_BENCHMARK_8BIT_HDRS),$(KEYWORD_BENCHMARK_8BIT_GENERATOR_INPUTS)))
+
+$(eval $(call microlite_test,person_detection_benchmark,\
+$(PERSON_DETECTION_BENCHMARK_SRCS),$(PERSON_DETECTION_BENCHMARK_HDRS),$(PERSON_DETECTION_BENCHMARK_GENERATOR_INPUTS)))
+```
 
 
