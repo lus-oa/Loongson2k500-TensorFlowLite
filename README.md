@@ -230,6 +230,9 @@ NoPersonDataIterations(10) took 352888 ticks (352 ms)
 
 模型文件路径为：./tensorflow/lite/micro/models/person_detect.tflite  
 
+## TFLM交叉编译
+前面说明了如何在PC上编译TFLM，以及运行TFLM基准测试。由于是在PC平台上直接编译和运行的，因此生成的可执行文件和库文件都是x86平台的。
 
+如果要生成LoongArch的库和可执行程序，则需要进行交叉编译。
 
 
