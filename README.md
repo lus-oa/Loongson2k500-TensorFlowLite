@@ -226,6 +226,10 @@ WithPersonDataIterations(10) took 326947 ticks (326 ms)
 
 NoPersonDataIterations(10) took 352888 ticks (352 ms)
 ```
+可以看到，人像检测模型运行10次的时间是三百多毫秒，一次平均三十几毫秒。这是在配备AMD标压R7 4800 CPU的Win10虚拟机下运行的结果。
+
+模型文件路径为：./tensorflow/lite/micro/models/person_detect.tflite  
+
 
 
 
