@@ -137,7 +137,13 @@ $(PERSON_DETECTION_BENCHMARK_SRCS),$(PERSON_DETECTION_BENCHMARK_HDRS),$(PERSON_D
 关键词基准测试使用的模型较小，比较适合在STM32 F3/F4这类主频低于100MHz的MCU。
 
 这个基准测试的模型比较小，计算量也不大，所以在PC上运行这个基准测试的耗时非常短：
-![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/f4b43928-1a73-4315-aed2-07757732cb11)  
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/f4b43928-1a73-4315-aed2-07757732cb11)   
+可以看到，在PC上运行关键词唤醒的速度非常快，10次时间不到1毫秒。
+
+模型文件路径为：./tensorflow/lite/micro/models/keyword_scrambled.tflite
+
+可以使用Netron软件查看模型结构，如下图所示：  
+
 
 
 
