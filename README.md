@@ -145,7 +145,7 @@ $(PERSON_DETECTION_BENCHMARK_SRCS),$(PERSON_DETECTION_BENCHMARK_HDRS),$(PERSON_D
 ### 2.6 Person detection基准测试
 人体检测基准测试的计算量相对要大一些，运行的时间也要长一些：  
 ```shell
-~/opensource/tflite-micro$ make -f tensorflow/lite/micro/tools/make/Makefile run_person_detection_benchmark
+loongson@ubuntu:~/Desktop/tflite-micro$ make -f tensorflow/lite/micro/tools/make/Makefile run_person_detection_benchmark
 tensorflow/lite/micro/tools/make/downloads/flatbuffers already exists, skipping the download.
 tensorflow/lite/micro/tools/make/downloads/kissfft already exists, skipping the download.
 tensorflow/lite/micro/tools/make/downloads/pigweed already exists, skipping the download.
