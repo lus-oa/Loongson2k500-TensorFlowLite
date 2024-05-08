@@ -142,8 +142,90 @@ $(PERSON_DETECTION_BENCHMARK_SRCS),$(PERSON_DETECTION_BENCHMARK_HDRS),$(PERSON_D
 
 模型文件路径为：./tensorflow/lite/micro/models/keyword_scrambled.tflite
 
-可以使用Netron软件查看模型结构，如下图所示：  
+### 2.6 Person detection基准测试
+人体检测基准测试的计算量相对要大一些，运行的时间也要长一些：  
+```shell
+~/opensource/tflite-micro$ make -f tensorflow/lite/micro/tools/make/Makefile run_person_detection_benchmark
+tensorflow/lite/micro/tools/make/downloads/flatbuffers already exists, skipping the download.
+tensorflow/lite/micro/tools/make/downloads/kissfft already exists, skipping the download.
+tensorflow/lite/micro/tools/make/downloads/pigweed already exists, skipping the download.
+g++ -std=c++11 -fno-rtti -fno-exceptions -fno-threadsafe-statics -Werror -fno-unwind-tables -ffunction-sections -fdata-sections -fmessage-length=0 -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON -Wsign-compare -Wdouble-promotion -Wshadow -Wunused-variable -Wunused-function -Wswitch -Wvla -Wall -Wextra -Wmissing-field-initializers -Wstrict-aliasing -Wno-unused-parameter  -DTF_LITE_USE_CTIME -Os -I. -Itensorflow/lite/micro/tools/make/downloads/gemmlowp -Itensorflow/lite/micro/tools/make/downloads/flatbuffers/include -Itensorflow/lite/micro/tools/make/downloads/ruy -Itensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/ -Itensorflow/lite/micro/tools/make/downloads/kissfft -c tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/examples/person_detection/testdata/person_image_data.cc -o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/examples/person_detection/testdata/person_image_data.o
+g++ -std=c++11 -fno-rtti -fno-exceptions -fno-threadsafe-statics -Werror -fno-unwind-tables -ffunction-sections -fdata-sections -fmessage-length=0 -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON -Wsign-compare -Wdouble-promotion -Wshadow -Wunused-variable -Wunused-function -Wswitch -Wvla -Wall -Wextra -Wmissing-field-initializers -Wstrict-aliasing -Wno-unused-parameter  -DTF_LITE_USE_CTIME -Os -I. -Itensorflow/lite/micro/tools/make/downloads/gemmlowp -Itensorflow/lite/micro/tools/make/downloads/flatbuffers/include -Itensorflow/lite/micro/tools/make/downloads/ruy -Itensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/ -Itensorflow/lite/micro/tools/make/downloads/kissfft -c tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/examples/person_detection/testdata/no_person_image_data.cc -o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/examples/person_detection/testdata/no_person_image_data.o
+g++ -std=c++11 -fno-rtti -fno-exceptions -fno-threadsafe-statics -Werror -fno-unwind-tables -ffunction-sections -fdata-sections -fmessage-length=0 -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON -Wsign-compare -Wdouble-promotion -Wshadow -Wunused-variable -Wunused-function -Wswitch -Wvla -Wall -Wextra -Wmissing-field-initializers -Wstrict-aliasing -Wno-unused-parameter  -DTF_LITE_USE_CTIME -Os -I. -Itensorflow/lite/micro/tools/make/downloads/gemmlowp -Itensorflow/lite/micro/tools/make/downloads/flatbuffers/include -Itensorflow/lite/micro/tools/make/downloads/ruy -Itensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/ -Itensorflow/lite/micro/tools/make/downloads/kissfft -c tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/models/person_detect_model_data.cc -o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/models/person_detect_model_data.o
+g++ -std=c++11 -fno-rtti -fno-exceptions -fno-threadsafe-statics -Werror -fno-unwind-tables -ffunction-sections -fdata-sections -fmessage-length=0 -DTF_LITE_STATIC_MEMORY -DTF_LITE_DISABLE_X86_NEON -Wsign-compare -Wdouble-promotion -Wshadow -Wunused-variable -Wunused-function -Wswitch -Wvla -Wall -Wextra -Wmissing-field-initializers -Wstrict-aliasing -Wno-unused-parameter  -DTF_LITE_USE_CTIME -I. -Itensorflow/lite/micro/tools/make/downloads/gemmlowp -Itensorflow/lite/micro/tools/make/downloads/flatbuffers/include -Itensorflow/lite/micro/tools/make/downloads/ruy -Itensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/ -Itensorflow/lite/micro/tools/make/downloads/kissfft -o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/bin/person_detection_benchmark tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/benchmarks/person_detection_benchmark.o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/examples/person_detection/testdata/person_image_data.o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/examples/person_detection/testdata/no_person_image_data.o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/obj/core/tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/genfiles/tensorflow/lite/micro/models/person_detect_model_data.o tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/lib/libtensorflow-microlite.a -Wl,--fatal-warnings -Wl,--gc-sections -lm
+tensorflow/lite/micro/tools/make/gen/linux_x86_64_default/bin/person_detection_benchmark non_test_binary linux
+InitializeBenchmarkRunner took 192 ticks (0 ms).
 
+WithPersonDataIterations(1) took 32299 ticks (32 ms)
+DEPTHWISE_CONV_2D took 895 ticks (0 ms).
+DEPTHWISE_CONV_2D took 895 ticks (0 ms).
+CONV_2D took 1801 ticks (1 ms).
+DEPTHWISE_CONV_2D took 424 ticks (0 ms).
+CONV_2D took 1465 ticks (1 ms).
+DEPTHWISE_CONV_2D took 921 ticks (0 ms).
+CONV_2D took 2725 ticks (2 ms).
+DEPTHWISE_CONV_2D took 206 ticks (0 ms).
+CONV_2D took 1367 ticks (1 ms).
+DEPTHWISE_CONV_2D took 423 ticks (0 ms).
+CONV_2D took 2540 ticks (2 ms).
+DEPTHWISE_CONV_2D took 102 ticks (0 ms).
+CONV_2D took 1265 ticks (1 ms).
+DEPTHWISE_CONV_2D took 205 ticks (0 ms).
+CONV_2D took 2449 ticks (2 ms).
+DEPTHWISE_CONV_2D took 204 ticks (0 ms).
+CONV_2D took 2449 ticks (2 ms).
+DEPTHWISE_CONV_2D took 243 ticks (0 ms).
+CONV_2D took 2483 ticks (2 ms).
+DEPTHWISE_CONV_2D took 202 ticks (0 ms).
+CONV_2D took 2481 ticks (2 ms).
+DEPTHWISE_CONV_2D took 203 ticks (0 ms).
+CONV_2D took 2489 ticks (2 ms).
+DEPTHWISE_CONV_2D took 52 ticks (0 ms).
+CONV_2D took 1222 ticks (1 ms).
+DEPTHWISE_CONV_2D took 90 ticks (0 ms).
+CONV_2D took 2485 ticks (2 ms).
+AVERAGE_POOL_2D took 8 ticks (0 ms).
+CONV_2D took 3 ticks (0 ms).
+RESHAPE took 0 ticks (0 ms).
+SOFTMAX took 2 ticks (0 ms).
+
+NoPersonDataIterations(1) took 32148 ticks (32 ms)
+DEPTHWISE_CONV_2D took 906 ticks (0 ms).
+DEPTHWISE_CONV_2D took 924 ticks (0 ms).
+CONV_2D took 1762 ticks (1 ms).
+DEPTHWISE_CONV_2D took 446 ticks (0 ms).
+CONV_2D took 1466 ticks (1 ms).
+DEPTHWISE_CONV_2D took 897 ticks (0 ms).
+CONV_2D took 2692 ticks (2 ms).
+DEPTHWISE_CONV_2D took 209 ticks (0 ms).
+CONV_2D took 1366 ticks (1 ms).
+DEPTHWISE_CONV_2D took 427 ticks (0 ms).
+CONV_2D took 2548 ticks (2 ms).
+DEPTHWISE_CONV_2D took 102 ticks (0 ms).
+CONV_2D took 1258 ticks (1 ms).
+DEPTHWISE_CONV_2D took 208 ticks (0 ms).
+CONV_2D took 2473 ticks (2 ms).
+DEPTHWISE_CONV_2D took 210 ticks (0 ms).
+CONV_2D took 2460 ticks (2 ms).
+DEPTHWISE_CONV_2D took 203 ticks (0 ms).
+CONV_2D took 2461 ticks (2 ms).
+DEPTHWISE_CONV_2D took 230 ticks (0 ms).
+CONV_2D took 2443 ticks (2 ms).
+DEPTHWISE_CONV_2D took 203 ticks (0 ms).
+CONV_2D took 2467 ticks (2 ms).
+DEPTHWISE_CONV_2D took 51 ticks (0 ms).
+CONV_2D took 1224 ticks (1 ms).
+DEPTHWISE_CONV_2D took 89 ticks (0 ms).
+CONV_2D took 2412 ticks (2 ms).
+AVERAGE_POOL_2D took 7 ticks (0 ms).
+CONV_2D took 2 ticks (0 ms).
+RESHAPE took 0 ticks (0 ms).
+SOFTMAX took 2 ticks (0 ms).
+
+WithPersonDataIterations(10) took 326947 ticks (326 ms)
+
+NoPersonDataIterations(10) took 352888 ticks (352 ms)
+```
 
 
 
