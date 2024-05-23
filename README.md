@@ -248,4 +248,45 @@ loongarch64-linux-gnu-gcc -v
 ```
 能够成功输出版本信息，则表示配置正确。
 
+### 3.2 交叉编译Keyword基准测试
+在之前的PC编译环境下，首先确保已经按照x86平台的命令成功编译过一次了，也就是如下命令成功执行了：  
+```shell
+make -f tensorflow/lite/micro/tools/make/Makefile run_keyword_benchmark
+```
+接下来，我们可以使用如下命令，编译LoongArch的keyword_benchmark可执行程序：  
+```shell
+MKFLAGS="-f tensorflow/lite/micro/tools/make/Makefile"
+
+# 清理之前编译生成的文件
+make $MKFLAGS clean
+
+# 通过 CC CXX 变量明确指定编译器
+MKFLAGS="$MKFLAGS CC=loongarch64-linux-gnu-gcc"
+MKFLAGS="$MKFLAGS CXX=loongarch64-linux-gnu-g++"
+
+# 编译
+make  $MKFLAGS keyword_benchmark -j8
+```
+
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/5faaf410-3ab9-4656-b7b5-78f2f5d889ed)
+
+编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。  
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/e3bb271a-82ac-43b5-9f9a-877f122e7527)  
+### 3.3 交叉编译Person detection基准测试
+类似的，我们可以使用如下命令，编译LoongArch的person_detection_benchmark可执行程序：  
+```shell
+MKFLAGS="-f tensorflow/lite/micro/tools/make/Makefile"
+
+# 通过 CC CXX 变量明确指定编译器
+MKFLAGS="$MKFLAGS CC=loongarch64-linux-gnu-gcc"
+MKFLAGS="$MKFLAGS CXX=loongarch64-linux-gnu-g++"
+
+# 编译
+make  $MKFLAGS person_detection_benchmark -j8
+```
+编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。
+
+
+
+
 
