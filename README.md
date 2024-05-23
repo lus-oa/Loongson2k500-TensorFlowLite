@@ -271,7 +271,9 @@ make  $MKFLAGS keyword_benchmark -j8
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/5faaf410-3ab9-4656-b7b5-78f2f5d889ed)
 
 编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。  
-![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/e3bb271a-82ac-43b5-9f9a-877f122e7527)  
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/5041f03e-7659-4c83-acc6-b032d5402750)  
+
+
 ### 3.3 交叉编译Person detection基准测试
 类似的，我们可以使用如下命令，编译LoongArch的person_detection_benchmark可执行程序：  
 ```shell
@@ -285,6 +287,7 @@ MKFLAGS="$MKFLAGS CXX=loongarch64-linux-gnu-g++"
 make  $MKFLAGS person_detection_benchmark -j8
 ```
 编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/7ff3ab9d-d184-4134-a687-a034f5e67acc)
 
 
 
