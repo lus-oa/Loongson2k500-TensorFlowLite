@@ -235,4 +235,17 @@ NoPersonDataIterations(10) took 352888 ticks (352 ms)
 
 如果要生成LoongArch的库和可执行程序，则需要进行交叉编译。
 
+### 3.1 配置loongarch64-linux-gnu-gcc环境
+配置loongarch64-linux-gnu-gcc环境比较简单，基本上只需要如下几步即可：
+
+- 将龙芯交叉编译工具链的压缩包解压；
+- 再将龙芯交叉编译工具链所在目录添加到PATH环境变量中；
+具体操作龙芯开发板手册中有详细描述，这里不再赘述。
+
+配置成功后，可以使用如下命令进行测试：
+```shell
+loongarch64-linux-gnu-gcc -v
+```
+能够成功输出版本信息，则表示配置正确。
+
 
