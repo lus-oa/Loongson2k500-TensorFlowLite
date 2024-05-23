@@ -288,7 +288,7 @@ make  $MKFLAGS person_detection_benchmark -j8
 ```
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/d58b4bc3-ce2a-4989-b896-8a3df203b864)
 
-编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。
+编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。  
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/7ff3ab9d-d184-4134-a687-a034f5e67acc)
 
 ## 四、在龙芯开发板上运行TFLM基准测试
@@ -298,7 +298,7 @@ make  $MKFLAGS person_detection_benchmark -j8
 龙芯2K0500开发板上的Keyword基准测试，结果如下：  
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/25662a8d-8a58-4a33-963b-e6bceedc2475)  
 ### 4.3 龙芯上的Person detection基准测试  
-龙芯2K500开发板上的Person detection基准测试，结果如下：
+龙芯2K500开发板上的Person detection基准测试，结果如下：  
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/2278956a-c879-4bee-9a64-839a029e3764)
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/f510fb65-4e9c-4ae8-a722-e7185e604e9c)
 
