@@ -286,6 +286,8 @@ MKFLAGS="$MKFLAGS CXX=loongarch64-linux-gnu-g++"
 # 编译
 make  $MKFLAGS person_detection_benchmark -j8
 ```
+![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/d58b4bc3-ce2a-4989-b896-8a3df203b864)
+
 编译完成后，将会在gen/linux_x86_64_default/bin目录下生成可执行程序。
 ![image](https://github.com/lus-oa/Loongson2k500-TensorFlowLite/assets/122666739/7ff3ab9d-d184-4134-a687-a034f5e67acc)
 
